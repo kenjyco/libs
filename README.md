@@ -27,7 +27,7 @@
 
     or
 
-    % brew install libxml2
+    $ brew install libxml2
     ```
 - `pip install "kenjyco-libs[data]"`
     - Includes: [aws-info-helper][], [dt-helper][], "kenjyco-libs[nosql,sql]",

@@ -21,7 +21,7 @@ Install Options
 
       or
 
-      % brew install libxml2
+      $ brew install libxml2
 
 -  ``pip install "kenjyco-libs[data]"``
 
