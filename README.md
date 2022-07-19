@@ -20,7 +20,7 @@
 Includes: [bg-helper][], [fs-helper][], [input-helper][], and
 [settings-helper][]
 
-### pip install kenjyco-libs[bs4]
+### pip install "kenjyco-libs[bs4]"
 
 Includes: beautifulsoup4, kenjyco-libs, and lxml
 
@@ -34,24 +34,24 @@ or
 % brew install libxml2
 ```
 
-### pip install kenjyco-libs[data]
+### pip install "kenjyco-libs[data]"
 
 Includes: [aws-info-helper][], [dt-helper][], "kenjyco-libs[nosql,sql]", and
 [webclient-helper][]
 
-### pip install kenjyco-libs[dev]
+### pip install "kenjyco-libs[dev]"
 
 Includes: kenjyco-libs, [readme-helper][], [testing-helper][]
 
-### pip install kenjyco-libs[full]
+### pip install "kenjyco-libs[full]"
 
 Includes: [chloop][], and "kenjyco-libs[bs4,data,dev]"
 
-### pip install kenjyco-libs[nosql]
+### pip install "kenjyco-libs[nosql]"
 
 Includes: kenjyco-libs, [mongo-helper][], [redis-helper][]
 
-### pip install kenjyco-libs[sql]
+### pip install "kenjyco-libs[sql]"
 
 Includes: [expectation-helper][], kenjyco-libs, and [sql-helper][]
 
