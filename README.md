@@ -15,52 +15,37 @@
 
 ## Install Options
 
-### `pip install kenjyco-libs`
+- `pip install kenjyco-libs`
+    - Includes: [bg-helper][], [fs-helper][], [input-helper][], and
+      [settings-helper][]
+- `pip install "kenjyco-libs[bs4]"`
+    - Includes: beautifulsoup4, kenjyco-libs, and lxml
+    - Also requires system requirements for `lxml`
 
-Includes: [bg-helper][], [fs-helper][], [input-helper][], and
-[settings-helper][]
+    ```
+    $ sudo apt-get install -y libxml2 libxslt1.1 libxml2-dev libxslt1-dev
 
-### `pip install "kenjyco-libs[bs4]"`
+    or
 
-Includes: beautifulsoup4, kenjyco-libs, and lxml
+    % brew install libxml2
+    ```
+- `pip install "kenjyco-libs[data]"`
+    - Includes: [aws-info-helper][], [dt-helper][], "kenjyco-libs[nosql,sql]",
+      and [webclient-helper][]
+- `pip install "kenjyco-libs[dev]"`
+    - Includes: kenjyco-libs, [readme-helper][], [testing-helper][]
+- `pip install "kenjyco-libs[full]"`
+    - Includes: [chloop][], and "kenjyco-libs[bs4,data,dev]"
+- `pip install "kenjyco-libs[nosql]"`
+    - Includes: kenjyco-libs, [mongo-helper][], [redis-helper][]
+- `pip install "kenjyco-libs[sql]"`
+    - Includes: [expectation-helper][], kenjyco-libs, and [sql-helper][]
+    - Also requires the `pg_config` executable
 
-Also requires system requirements for `lxml`
+    ```
+    $ sudo apt-get install -y libpq-dev
 
-```
-$ sudo apt-get install -y libxml2 libxslt1.1 libxml2-dev libxslt1-dev
+    or
 
-or
-
-% brew install libxml2
-```
-
-### `pip install "kenjyco-libs[data]"`
-
-Includes: [aws-info-helper][], [dt-helper][], "kenjyco-libs[nosql,sql]", and
-[webclient-helper][]
-
-### `pip install "kenjyco-libs[dev]"`
-
-Includes: kenjyco-libs, [readme-helper][], [testing-helper][]
-
-### `pip install "kenjyco-libs[full]"`
-
-Includes: [chloop][], and "kenjyco-libs[bs4,data,dev]"
-
-### `pip install "kenjyco-libs[nosql]"`
-
-Includes: kenjyco-libs, [mongo-helper][], [redis-helper][]
-
-### `pip install "kenjyco-libs[sql]"`
-
-Includes: [expectation-helper][], kenjyco-libs, and [sql-helper][]
-
-Also requires the `pg_config` executable
-
-```
-$ sudo apt-get install -y libpq-dev
-
-or
-
-$ brew install postgresql
-```
+    $ brew install postgresql
+    ```
