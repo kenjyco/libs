@@ -1,5 +1,5 @@
-[bg-helper]: https://github.com/kenjyco/bg-helper/blob/master/README.md
 [aws-info-helper]: https://github.com/kenjyco/aws-info-helper/blob/master/README.md
+[bg-helper]: https://github.com/kenjyco/bg-helper/blob/master/README.md
 [chloop]: https://github.com/kenjyco/chloop/blob/master/README.md
 [dt-helper]: https://github.com/kenjyco/dt-helper/blob/master/README.md
 [expectation-helper]: https://github.com/kenjyco/expectation-helper/blob/master/README.md
