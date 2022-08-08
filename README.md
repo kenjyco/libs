@@ -35,9 +35,9 @@
 - `pip install "kenjyco-libs[dev]"`
     - Includes: kenjyco-libs, [readme-helper][], [testing-helper][]
 - `pip install "kenjyco-libs[full]"`
-    - Includes: [chloop][], and "kenjyco-libs[bs4,data,dev]"
+    - Includes: "kenjyco-libs[bs4,data,dev]"
 - `pip install "kenjyco-libs[nosql]"`
-    - Includes: kenjyco-libs, [mongo-helper][], [redis-helper][]
+    - Includes: [chloop][], kenjyco-libs, [mongo-helper][], [redis-helper][]
 - `pip install "kenjyco-libs[sql]"`
     - Includes: [expectation-helper][], kenjyco-libs, and [sql-helper][]
     - Also requires the `pg_config` executable

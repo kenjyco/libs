@@ -39,13 +39,13 @@ Install Options
 
 -  ``pip install "kenjyco-libs[full]"``
 
-   -  Includes:
-      `chloop <https://github.com/kenjyco/chloop/blob/master/README.md>`__,
-      and “kenjyco-libs[bs4,data,dev]”
+   -  Includes: “kenjyco-libs[bs4,data,dev]”
 
 -  ``pip install "kenjyco-libs[nosql]"``
 
-   -  Includes: kenjyco-libs,
+   -  Includes:
+      `chloop <https://github.com/kenjyco/chloop/blob/master/README.md>`__,
+      kenjyco-libs,
       `mongo-helper <https://github.com/kenjyco/mongo-helper/blob/master/README.md>`__,
       `redis-helper <https://github.com/kenjyco/redis-helper/blob/master/README.md>`__
 

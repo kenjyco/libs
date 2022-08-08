@@ -36,7 +36,7 @@ setup(
         'bs4': requirements_bs4,
         'data': requirements_data,
         'dev': requirements_dev,
-        'full': requirements_bs4 + requirements_data + requirements_dev + ['chloop'],
+        'full': requirements_bs4 + requirements_data + requirements_dev,
         'nosql': requirements_nosql,
         'sql': requirements_sql,
     },
