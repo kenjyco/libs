@@ -6,23 +6,36 @@ import settings_helper as sh
 
 SETTINGS = sh.get_all_settings(__name__).get(sh.APP_ENV, {})
 
-package_repos_base_path = SETTINGS.get('package_repos_base_path')
-kenjyco_libs_repo_names = SETTINGS.get('kenjyco_libs_repo_names')
-if not package_repos_base_path or not kenjyco_libs_repo_names:
+_package_repos_base_path = SETTINGS.get('package_repos_base_path')
+_kenjyco_libs_repo_names = SETTINGS.get('kenjyco_libs_repo_names')
+_dependency_repos_base_path = SETTINGS.get('dependency_repos_base_path')
+if not _package_repos_base_path or not _kenjyco_libs_repo_names or not _dependency_repos_base_path:
     # Sync settings.ini with vimdiff
     sh.sync_settings_file(__name__)
     SETTINGS = sh.get_all_settings(__name__).get(sh.APP_ENV, {})
-    package_repos_base_path = SETTINGS.get('package_repos_base_path')
-    kenjyco_libs_repo_names = SETTINGS.get('kenjyco_libs_repo_names')
+    _package_repos_base_path = SETTINGS.get('package_repos_base_path')
+    _kenjyco_libs_repo_names = SETTINGS.get('kenjyco_libs_repo_names')
+    _dependency_repos_base_path = SETTINGS.get('dependency_repos_base_path')
 
-assert package_repos_base_path and kenjyco_libs_repo_names, 'PACKAGE_REPOS_BASE_PATH and KENJYCO_LIBS_REPO_NAMES are not set'
+assert _package_repos_base_path and _kenjyco_libs_repo_names and _dependency_repos_base_path, (
+    'PACKAGE_REPOS_BASE_PATH, KENJYCO_LIBS_REPO_NAMES, and DEPENDENCY_REPOS_BASE_PATH are not set'
+)
 
-package_repos_base_path = fh.abspath(package_repos_base_path)
-local_repos_paths_dict = {}
-not_cloned = {}
-for repo in kenjyco_libs_repo_names:
-    repo_path = os.path.join(package_repos_base_path, repo)
-    if os.path.isdir(repo_path):
-        local_repos_paths_dict[repo] = repo_path
-    else:
-        not_cloned[repo] = repo_path
+_package_repos_base_path = fh.abspath(_package_repos_base_path)
+_dependency_repos_base_path = fh.abspath(_dependency_repos_base_path)
+
+
+def _get_clone_status_for_packages():
+    cloned = {}
+    uncloned = {}
+    for repo in _kenjyco_libs_repo_names:
+        repo_path = os.path.join(_package_repos_base_path, repo)
+        if os.path.isdir(repo_path):
+            cloned[repo] = repo_path
+        else:
+            uncloned[repo] = repo_path
+
+    return {
+        'cloned': cloned,
+        'uncloned': uncloned
+    }
