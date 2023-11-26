@@ -1,2 +1,2 @@
-expectation-helper
+expectation-helper; python_version >= "3.8"
 sql-helper

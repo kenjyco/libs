@@ -28,6 +28,7 @@ _dependency_repos_dict = {
     'click': 'https://github.com/pallets/click',
     'cryptography': 'https://github.com/pyca/cryptography',
     'hiredis': 'https://github.com/redis/hiredis-py',
+    'importlib-metadata': 'https://github.com/python/importlib_metadata',
     'ipython': 'https://github.com/ipython/ipython',
     'jinja2': 'https://github.com/pallets/jinja',
     'lxml': 'https://github.com/lxml/lxml',
@@ -142,9 +143,27 @@ def install_packages_in_editable_mode(show=True):
     - show: if True, show the `pip` command before executing
     """
     cloned_locally = _get_clone_status_for_packages()['cloned']
+    if 'libs' in cloned_locally:
+        cloned_locally['kenjyco-libs'] = cloned_locally['libs']
     # cloned_locally.update(_get_clone_status_for_dependencies()['cloned'])
     installed_packages = [p.key for p in pkg_resources.working_set]
     # editable_install_ok = (set(cloned_locally.keys()) & set(installed_packages)) - set(_skip_editable_install_for_these)
     editable_install_ok = set(cloned_locally.keys()) & set(installed_packages)
     paths = [cloned_locally[pkg] for pkg in editable_install_ok]
     return bh.tools.pip_install_editable(paths, show=show)
+
+
+def dev_setup(py_versions='', show=True):
+    """Calls some funcs so you don't have to
+
+    - py_versions: string containing Python versions to make venvs for separated
+      by any of , ; |
+    - show: if True, show the `git`/`pip` commands before executing
+
+    Calls these in order:
+
+    - clone_all_missing
+    - install_packages_in_editable_mode
+    """
+    clone_all_missing(show=show)
+    install_packages_in_editable_mode(show=show)

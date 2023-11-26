@@ -1,4 +1,5 @@
 bg-helper
+click>=6.0
 fs-helper
 input-helper
 settings-helper
