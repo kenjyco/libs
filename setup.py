@@ -29,14 +29,14 @@ requirements_data = ['aws-info-helper', 'dt-helper', 'webclient-helper'] + requi
 
 setup(
     name='kenjyco-libs',
-    version='0.0.6',
+    version='0.0.7',
     description='Easily install kenjyco libs',
     long_description=long_description,
     author='Ken',
     author_email='kenjyco@gmail.com',
     license='MIT',
     url='https://github.com/kenjyco/kenjyco-libs',
-    download_url='https://github.com/kenjyco/kenjyco-libs/tarball/v0.0.6',
+    download_url='https://github.com/kenjyco/kenjyco-libs/tarball/v0.0.7',
     packages=find_packages(),
     extras_require={
         'bs4': requirements_bs4,
@@ -60,6 +60,7 @@ setup(
         'console_scripts': [
             'kenjyco-dev-setup=kenjyco_libs.scripts.dev_setup:main',
             'kenjyco-ipython=kenjyco_libs.scripts.shell:main',
+            'gsv=kenjyco_libs.scripts.gsv:main',
         ],
     },
     classifiers=[
