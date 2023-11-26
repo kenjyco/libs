@@ -60,7 +60,6 @@ setup(
         'console_scripts': [
             'kenjyco-dev-setup=kenjyco_libs.scripts.dev_setup:main',
             'kenjyco-ipython=kenjyco_libs.scripts.shell:main',
-            'gsv=kenjyco_libs.scripts.gsv:main',
         ],
     },
     classifiers=[
