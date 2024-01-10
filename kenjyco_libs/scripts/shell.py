@@ -16,27 +16,36 @@ import click
 )
 def main(**kwargs):
     """Start ipython with several things imported"""
-    import bg_helper as bh
-    import fs_helper as fh
     import input_helper as ih
-    import kenjyco_libs as kl
-    import settings_helper as sh
+    import random
+    from datetime import datetime, date, timedelta
     from importlib import import_module
     from pprint import pprint
-    things = {'bh': bh, 'fh': fh, 'ih': ih, 'kl': kl, 'sh': sh, 'pprint': pprint}
-    optional_imports = [
+    things = {
+        'date': date,
+        'datetime': datetime,
+        'ih': ih,
+        'pprint': pprint,
+        'random': random,
+        'timedelta': timedelta,
+    }
+    kenjyco_imports = [
         ('aws_info_helper', 'ah'),
+        ('bg_helper', 'bh'),
         ('chloop', 'chloop'),
         ('dt_helper', 'dh'),
         ('expectation_helper', 'eh'),
+        ('fs_helper', 'fh'),
+        ('kenjyco_libs', 'kl'),
         ('mongo_helper', 'mh'),
         ('readme_helper', 'rmh'),
         ('redis_helper', 'rh'),
+        ('settings_helper', 'sh'),
         ('sql_helper', 'sqh'),
         ('testing_helper', 'th'),
         ('webclient_helper', 'wh'),
     ]
-    for package_name, import_name in optional_imports:
+    for package_name, import_name in kenjyco_imports:
         try:
             things[import_name] = import_module(package_name)
         except (ImportError, ModuleNotFoundError):
