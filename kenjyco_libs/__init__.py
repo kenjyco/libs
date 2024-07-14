@@ -22,7 +22,7 @@ assert _package_repos_base_path and _kenjyco_libs_repo_names and _dependency_rep
 )
 
 _dependency_repos_dict = {
-    # 'beautifulsoup4': 'https://code.launchpad.net/beautifulsoup',  # Not a git repo
+    'beautifulsoup4': 'https://git.launchpad.net/beautifulsoup',
     'boto3': 'https://github.com/boto/boto3',
     'click': 'https://github.com/pallets/click',
     'cryptography': 'https://github.com/pyca/cryptography',
