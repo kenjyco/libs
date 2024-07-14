@@ -1,5 +1,4 @@
 import os.path
-import pkg_resources
 import bg_helper as bh
 import fs_helper as fh
 import settings_helper as sh
@@ -146,7 +145,7 @@ def install_packages_in_editable_mode(show=True):
     if 'libs' in cloned_locally:
         cloned_locally['kenjyco-libs'] = cloned_locally['libs']
     # cloned_locally.update(_get_clone_status_for_dependencies()['cloned'])
-    installed_packages = [p.key for p in pkg_resources.working_set]
+    installed_packages = bh.tools.installed_packages(name_only=True)
     # editable_install_ok = (set(cloned_locally.keys()) & set(installed_packages)) - set(_skip_editable_install_for_these)
     editable_install_ok = set(cloned_locally.keys()) & set(installed_packages)
     paths = [cloned_locally[pkg] for pkg in editable_install_ok]
