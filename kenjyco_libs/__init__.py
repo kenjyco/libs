@@ -116,7 +116,9 @@ def _clone_packages(show=True):
     - show: if True, show the `git` command before executing
     """
     clone_status = _get_clone_status_for_packages()
-    for name in clone_status['uncloned']:
+    pkgs_in_venv = _get_kenjyco_pkgs_in_venv()
+    uncloned_set = set(clone_status['uncloned'].keys())
+    for name in uncloned_set.intersection(pkgs_in_venv):
         url = 'https://github.com/kenjyco/{}'.format(name)
         bh.tools.git_clone(
             url,
@@ -132,7 +134,9 @@ def _clone_dependencies(show=True):
     - show: if True, show the `git` command before executing
     """
     clone_status = _get_clone_status_for_dependencies()
-    for name in clone_status['uncloned']:
+    deps_in_venv = _get_dependencies_in_venv()
+    uncloned_set = set(clone_status['uncloned'].keys())
+    for name in uncloned_set.intersection(deps_in_venv):
         url = _dependency_repos_dict[name]
         bh.tools.git_clone(
             url,
