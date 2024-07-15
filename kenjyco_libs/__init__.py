@@ -95,19 +95,19 @@ def _get_clone_status_for_dependencies():
     }
 
 
+def _get_kenjyco_pkgs_in_venv():
+    installed_pkgs_set = set(bh.tools.installed_packages().keys())
+    full_kenjyco_pkgs_set = set(_kenjyco_libs_repo_names)
+    return installed_pkgs_set.intersection(full_kenjyco_pkgs_set)
+
+
 def _get_dependencies_in_venv():
     installed_pkgs_set = set([
         name.lower()
         for name in bh.tools.installed_packages().keys()
     ])
     full_dep_repos_set = set(_dependency_repos_dict.keys())
-    return sorted(installed_pkgs_set.intersection(full_dep_repos_set))
-
-
-def _get_kenjyco_pkgs_in_venv():
-    installed_pkgs_set = set(bh.tools.installed_packages().keys())
-    full_kenjyco_pkgs_set = set(_kenjyco_libs_repo_names)
-    return sorted(installed_pkgs_set.intersection(full_kenjyco_pkgs_set))
+    return installed_pkgs_set.intersection(full_dep_repos_set)
 
 
 def _clone_packages(show=True):
