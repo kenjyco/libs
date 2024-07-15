@@ -29,14 +29,14 @@ requirements_data = ['aws-info-helper', 'dt-helper', 'webclient-helper'] + requi
 
 setup(
     name='kenjyco-libs',
-    version='0.0.7',
+    version='0.0.8',
     description='Easily install kenjyco libs',
     long_description=long_description,
     author='Ken',
     author_email='kenjyco@gmail.com',
     license='MIT',
     url='https://github.com/kenjyco/kenjyco-libs',
-    download_url='https://github.com/kenjyco/kenjyco-libs/tarball/v0.0.7',
+    download_url='https://github.com/kenjyco/kenjyco-libs/tarball/v0.0.8',
     packages=find_packages(),
     extras_require={
         'bs4': requirements_bs4,
