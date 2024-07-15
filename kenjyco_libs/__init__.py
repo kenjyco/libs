@@ -98,6 +98,7 @@ def _get_clone_status_for_dependencies():
 def _get_kenjyco_pkgs_in_venv():
     installed_pkgs_set = set(bh.tools.installed_packages().keys())
     full_kenjyco_pkgs_set = set(_kenjyco_libs_repo_names)
+    full_kenjyco_pkgs_set.add('kenjyco-libs')
     return installed_pkgs_set.intersection(full_kenjyco_pkgs_set)
 
 
