@@ -119,7 +119,10 @@ def _clone_packages(show=True):
     clone_status = _get_clone_status_for_packages()
     pkgs_in_venv = _get_kenjyco_pkgs_in_venv()
     uncloned_set = set(clone_status['uncloned'].keys())
-    for name in sorted(uncloned_set.intersection(pkgs_in_venv)):
+    to_clone = uncloned_set.intersection(pkgs_in_venv)
+    if 'libs' in uncloned_set:
+        to_clone.add('libs')
+    for name in sorted(to_clone):
         url = 'https://github.com/kenjyco/{}'.format(name)
         bh.tools.git_clone(
             url,
