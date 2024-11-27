@@ -1,6 +1,13 @@
 import click
 
 
+try:
+    ModuleNotFoundError
+except NameError:
+    class ModuleNotFoundError(ImportError):
+        pass
+
+
 @click.command()
 @click.option(
     '--no-vi', 'no_vi', is_flag=True, default=False,
