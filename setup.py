@@ -60,19 +60,28 @@ setup(
         'console_scripts': [
             'kenjyco-dev-setup=kenjyco_libs.scripts.dev_setup:main',
             'kenjyco-ipython=kenjyco_libs.scripts.shell:main',
+            'gsv=kenjyco_libs.scripts.gsv:main',
         ],
     },
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries',
         'Topic :: Utilities',
     ],
-    keywords=['api', 'data', 'libs', 'cli', 'command-line', 'helper', 'kenjyco']
+    keywords=['api', 'data', 'libs', 'cli', 'meta-package', 'command-line', 'helper', 'kenjyco']
 )
