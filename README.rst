@@ -1,5 +1,17 @@
-Install Options
----------------
+A meta-package that orchestrates development workflows across the
+kenjyco helper library ecosystem. This library provides sophisticated
+ecosystem coordination by grouping related extra dependency sets,
+managing editable installations, and cloning repositories without
+typical setup friciton.
+
+Every operation interrogates actual system state rather than making
+optimistic assumptions, and missing components never break core
+functionality. It’s particularly valuable as an example for developers
+working with complex package ecosystems who need reliable, transparent,
+and composable development workflows.
+
+Install
+-------
 
 Use ``pip`` to install
 `kenjyco-libs <https://github.com/kenjyco/libs>`__, ideally to a
@@ -17,6 +29,14 @@ Use ``pip`` to install
       `input-helper <https://github.com/kenjyco/input-helper/blob/master/README.md>`__,
       `settings-helper <https://github.com/kenjyco/settings-helper/blob/master/README.md>`__
 
+-  ``pip install "kenjyco-libs[ipython]"``
+
+   -  Includes: ipython, kenjyco-libs
+
+-  ``pip install "kenjyco-libs[xmljson]"``
+
+   -  Includes: kenjyco-libs, xmljson
+
 -  ``pip install "kenjyco-libs[bs4]"``
 
    -  Includes: beautifulsoup4, kenjyco-libs, lxml
@@ -24,33 +44,13 @@ Use ``pip`` to install
 
    ::
 
-      $ sudo apt-get install -y libxml2 libxslt1.1 libxml2-dev libxslt1-dev
+      sudo apt-get install -y libxml2 libxslt1.1 libxml2-dev libxslt1-dev
 
-      or
+   or
 
-      $ brew install libxml2
+   ::
 
--  ``pip install "kenjyco-libs[data]"``
-
-   -  Includes:
-      `aws-info-helper <https://github.com/kenjyco/aws-info-helper/blob/master/README.md>`__,
-      `dt-helper <https://github.com/kenjyco/dt-helper/blob/master/README.md>`__,
-      “kenjyco-libs[nosql,sql,xmljson]”,
-      `webclient-helper <https://github.com/kenjyco/webclient-helper/blob/master/README.md>`__
-
--  ``pip install "kenjyco-libs[dev]"``
-
-   -  Includes: kenjyco-libs,
-      `readme-helper <https://github.com/kenjyco/readme-helper/blob/master/README.md>`__,
-      `testing-helper <https://github.com/kenjyco/testing-helper/blob/master/README.md>`__
-
--  ``pip install "kenjyco-libs[full]"``
-
-   -  Includes: “kenjyco-libs[bs4,data,dev,ipython]”
-
--  ``pip install "kenjyco-libs[ipython]"``
-
-   -  Includes: ipython, kenjyco-libs
+      brew install libxml2
 
 -  ``pip install "kenjyco-libs[nosql]"``
 
@@ -71,24 +71,36 @@ Use ``pip`` to install
 
    ::
 
-      $ sudo apt-get install -y libpq-dev
+      sudo apt-get install -y libpq-dev
 
-      or
+   or
 
-      $ brew install postgresql
+   ::
 
--  ``pip install "kenjyco-libs[xmljson]"``
+      brew install postgresql
 
-   -  Includes: kenjyco-libs, xmljson
+-  ``pip install "kenjyco-libs[data]"``
 
-Setup and Usage
----------------
+   -  Includes:
+      `aws-info-helper <https://github.com/kenjyco/aws-info-helper/blob/master/README.md>`__,
+      `dt-helper <https://github.com/kenjyco/dt-helper/blob/master/README.md>`__,
+      “kenjyco-libs[nosql,sql,xmljson]”,
+      `webclient-helper <https://github.com/kenjyco/webclient-helper/blob/master/README.md>`__
 
-The first time that ``kenjyco_libs`` is imported, the sample
-`settings.ini <https://github.com/kenjyco/libs/blob/master/kenjyco_libs/settings.ini>`__
-file will be copied to the ``~/.config/kenjyco-libs`` directory.
+-  ``pip install "kenjyco-libs[dev]"``
 
-::
+   -  Includes: kenjyco-libs,
+      `readme-helper <https://github.com/kenjyco/readme-helper/blob/master/README.md>`__,
+      `testing-helper <https://github.com/kenjyco/testing-helper/blob/master/README.md>`__
+
+-  ``pip install "kenjyco-libs[full]"``
+
+   -  Includes: “kenjyco-libs[bs4,data,dev,ipython]”
+
+Default settings.ini
+--------------------
+
+.. code:: ini
 
    [default]
    package_repos_base_path = ~/repos/personal/packages
@@ -101,34 +113,114 @@ file will be copied to the ``~/.config/kenjyco-libs`` directory.
    [test]
    something =
 
-After installing with ``pip``, you will want to **run the provided
-``kenjyco-dev-setup`` script**. This will automatically clone kenjyco
-repos and their dependencies to the paths specified in settings.ini,
-then reinstall the packages in “editable mode” (i.e. the packages in the
-venv’s site-packages directory will be linked to the cloned kenjyco
-repos).
+The first time that ``kenjyco_libs`` is imported, the sample
+`settings.ini <https://github.com/kenjyco/libs/blob/master/kenjyco_libs/settings.ini>`__
+file will be copied to the ``~/.config/kenjyco-libs`` directory.
 
-Use **kenjyco-ipython** to start ipython with all of the installed
-kenjyco packages automatically imported (keeping your ipython shell
-history clean from boilerplate import statements).
+QuickStart
+----------
+
+The most powerful workflow is the **complete development environment
+setup** for whichever combination of “extras” that were installed via
+pip.
+
+Run the provided **``kenjyco-dev-setup``** script to clone kenjyco repos
+and their dependencies to the paths specified in settings.ini. The
+packages will be reinstalled in “editable mode” (i.e. the packages in
+the venv’s site-packages directory will be linked to the cloned kenjyco
+repos).
 
 ::
 
-   % venv/bin/kenjyco-dev-setup --help
-   Usage: kenjyco-dev-setup [OPTIONS]
+   kenjyco-dev-setup
 
-     Clone missing repos and install more packages in editable mode
+Use **``kenjyco-ipython``** to start ipython with all of the installed
+kenjyco packages automatically imported as their preferred 2-character
+aliases, keeping your ipython shell history clean from boilerplate
+import statements.
 
-     Options:
-       --help  Show this message and exit.
+::
 
+   kenjyco-ipython
 
-   % venv/bin/kenjyco-ipython --help
-   Usage: kenjyco-ipython [OPTIONS]
+..
 
-     Start ipython with several things imported
+   Optionallly pass ``--no-vi`` to disable vi editing mode or
+   ``--no-colors`` to not use colors and syntax highlighting.
 
-   Options:
-     --no-vi      Do not use vi editing mode
-     --no-colors  Do not use colors / syntax highlighting
-     --help       Show this message and exit.
+API Overview
+------------
+
+High-Level Workflow Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  **``dev_setup(py_versions='', show=True)``** - Complete ecosystem
+   setup workflow
+
+   -  ``py_versions``: String containing Python versions to make venvs
+      for (separated by ``,``, ``;``, or ``|``)
+   -  ``show``: If True, show the ``git``/``pip`` commands before
+      executing
+   -  Internal calls: ``clone_all_missing()``,
+      ``install_packages_in_editable_mode()``
+
+-  **``clone_all_missing(show=True)``** - Clone package and dependency
+   repositories locally
+
+   -  ``show``: If True, show the ``git`` command before executing
+   -  Internal calls: ``_clone_packages()``, ``_clone_dependencies()``
+
+-  **``install_packages_in_editable_mode(show=True)``** - Install cloned
+   packages in editable mode
+
+   -  ``show``: If True, show the ``pip`` command before executing
+   -  Return: Result of pip install editable operations
+   -  Internal calls: ``bh.tools.pip_install_editable()``
+
+Environment State Interrogation Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  **``_get_clone_status_for_packages()``** - Discover which ecosystem
+   packages are cloned locally
+
+   -  Return: Dictionary with keys ``cloned`` (name to path mapping) and
+      ``uncloned`` (name to expected_path mapping)
+   -  Internal calls: None
+
+-  **``_get_clone_status_for_dependencies()``** - Discover which
+   dependency packages are cloned locally
+
+   -  Return: Dictionary with keys ``cloned`` (name→path mapping) and
+      ``uncloned`` (name→expected_path mapping)
+   -  Internal calls: None
+
+-  **``_get_kenjyco_pkgs_in_venv()``** - Identify which ecosystem
+   packages are installed
+
+   -  Return: Set intersection of installed packages and ecosystem
+      package names
+   -  Internal calls: ``bh.tools.installed_packages()``
+
+-  **``_get_dependencies_in_venv()``** - Identify which dependency
+   packages are installed
+
+   -  Return: Set intersection of installed packages and known
+      dependency names (lowercased)
+   -  Internal calls: ``bh.tools.installed_packages()``
+
+Repository Cloning Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  **``_clone_packages(show=True)``** - Clone ecosystem package
+   repositories locally
+
+   -  ``show``: If True, show the ``git`` command before executing
+   -  Internal calls: ``_get_clone_status_for_packages()``,
+      ``_get_kenjyco_pkgs_in_venv()``, ``bh.tools.git_clone()``
+
+-  **``_clone_dependencies(show=True)``** - Clone external dependency
+   repositories locally
+
+   -  ``show``: If True, show the ``git`` command before executing
+   -  Internal calls: ``_get_clone_status_for_dependencies()``,
+      ``_get_dependencies_in_venv()``, ``bh.tools.git_clone()``
